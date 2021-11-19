@@ -39,10 +39,20 @@ function getAllIndexes(arr, val) {
 
 function Keyboard({ keyword, inscriptedWord, onInscriptedWordChange }) {
   const [usedLetters, setUsedLetters] = useState("");
+  const [lifes, setLifes] = useState(10);
 
   const handleOnClick = (letter) => {
     setUsedLetters(usedLetters + letter);
     const guesses = getAllIndexes(keyword, letter);
+    console.log(guesses);
+
+    if (guesses.length === 0) {
+      setLifes(lifes - 1);
+    }
+
+    //if (guessses.length === 0) {
+
+    // if (number of wrong answers === life pool) {hang the man}}
 
     let showGoodLetter = (" " + inscriptedWord).slice(1);
     for (const index of guesses) {
@@ -61,13 +71,16 @@ function Keyboard({ keyword, inscriptedWord, onInscriptedWordChange }) {
           <button
             className="letterButton"
             key={character}
-            disabled={usedLetters.includes(character)}
+            disabled={usedLetters.includes(character) || lifes === 0}
             onClick={() => handleOnClick(character)} // dzieki funkcji bezimiennej handle on click razem z propsem wykona się po przekazaniu wyżej.
           >
             {character}
           </button>
         ))}
       </div>
+      <div>Lifes remaning {lifes}</div>
+      <h1 hidden={lifes !== 0}>Game Over</h1>
+      <button>reset</button>
     </div>
   );
 }

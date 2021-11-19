@@ -1,11 +1,6 @@
 .keyboard_box {
-  width: 500px;
+  width: 98%;
   height: 500px;
-  background-color: tomato;
-}
-
-.test {
-  width: 1000px;
-  height: 1000px;
-  background-color: blue;
+  background-image: url(/src/images/hangman1.png);
+  background-repeat: no-repeat;
 }
