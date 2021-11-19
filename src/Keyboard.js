@@ -29,43 +29,45 @@ const alphabet = [
   "y",
   "z",
 ];
+
+function getAllIndexes(arr, val) {
+  let indexes = [],
+    i;
+  for (i = 0; i < arr.length; i++) if (arr[i] === val) indexes.push(i);
+  return indexes;
+}
+
 function Keyboard({ keyword, inscriptedWord, onInscriptedWordChange }) {
-  const [selectedLetter, setSelectedLeter] = useState(null);
   const [usedLetters, setUsedLetters] = useState("");
 
   const handleOnClick = (letter) => {
-    setSelectedLeter(letter);
     setUsedLetters(usedLetters + letter);
+    const guesses = getAllIndexes(keyword, letter);
+
+    let showGoodLetter = (" " + inscriptedWord).slice(1);
+    for (const index of guesses) {
+      showGoodLetter =
+        showGoodLetter.substr(0, index * 2) +
+        letter +
+        showGoodLetter.substr(index * 2 + 1, showGoodLetter.length);
+    }
+    onInscriptedWordChange(showGoodLetter);
   };
-  const isLetterCorrect = keyword.includes(selectedLetter);
-
-  const indexOFCorrectLetter = keyword.indexOf(selectedLetter);
-
-  // const swapLetter = inscriptedWord.replace(
-  //   indexOFCorrectLetter,
-  //   selectedLetter
-  // );
 
   return (
     <div className="keyboard_box">
       <div className="keyborad_buttons">
-        {alphabet.map((letter) => (
+        {alphabet.map((character) => (
           <button
             className="letterButton"
-            key={letter}
-            onClick={() => handleOnClick(letter)} // dzieki funkcji bezimiennej handle on click razem z propsem wykona się po przekazaniu wyżej.
+            key={character}
+            disabled={usedLetters.includes(character)}
+            onClick={() => handleOnClick(character)} // dzieki funkcji bezimiennej handle on click razem z propsem wykona się po przekazaniu wyżej.
           >
-            {letter}
+            {character}
           </button>
         ))}
       </div>
-
-      <h2>{selectedLetter}</h2>
-      <h1>{usedLetters}</h1>
-      {console.log(isLetterCorrect)}
-      {console.log(keyword)}
-      {console.log(indexOFCorrectLetter)}
-      {/* {console.log(swapLetter)} */}
     </div>
   );
 }
