@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Keyboard from "./Keyboard";
+import "./MainGameBrain.css";
 const catchphrases = [
   "bearded dragon",
   "beaski",
@@ -68,15 +69,17 @@ function MainGameBrain() {
   // 5. show You Win!
 
   return (
-    <>
-      <div>{keyWord}</div>
-      <div>{inscriptedWord}</div>
+    <div className="container_box">
+      <div className="inscriptedWord_box">
+        <div className="keyWord">{keyWord}</div>
+        <div className="inscriptedWord">{inscriptedWord}</div>
+      </div>
       <Keyboard
         keyword={keyWord}
         inscriptedWord={inscriptedWord}
         onInscriptedWordChange={(word) => setInscriptedWord(word)}
       />
-    </>
+    </div>
   );
 }
 

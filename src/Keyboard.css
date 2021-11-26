@@ -1,6 +1,123 @@
-.keyboard_box {
-  width: 98%;
-  height: 500px;
+.keyboard_box1 {
+  transition: 0.4s background-image;
   background-image: url(/src/images/hangman1.png);
+}
+
+.keyboard_box2 {
+  transition: 0.4s background-image;
+  background-image: url(/src/images/hangman2.png);
+}
+
+.keyboard_box3 {
+  transition: 0.4s background-image;
+  background-image: url(/src/images/hangman3.png);
+}
+
+.keyboard_box4 {
+  transition: 0.4s background-image;
+  background-image: url(/src/images/hangman4.png);
+}
+
+.keyboard_box5 {
+  transition: 0.4s background-image;
+  background-image: url(/src/images/hangman5.png);
+}
+
+.keyboard_box6 {
+  transition: 0.4s background-image;
+  background-image: url(/src/images/hangman6.png);
+}
+
+.keyboard_box7 {
+  transition: 0.4s background-image;
+  background-image: url(/src/images/hangman7.png);
+}
+
+.keyboard_box1,
+.keyboard_box2,
+.keyboard_box3,
+.keyboard_box4,
+.keyboard_box5,
+.keyboard_box6,
+.keyboard_box7 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 600px;
+  width: 1000px;
   background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  z-index: 0;
+  padding-bottom: 30px;
+}
+
+.buttons_box {
+  width: 700px;
+  height: 50px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.keyborad_buttons {
+  width: 50%;
+  min-width: 250px;
+}
+
+.resetAndLifesButton_box {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  width: 230px;
+  justify-content: space-between;
+}
+
+.letterButton {
+  font-size: 1rem;
+  background-color: wheat;
+  border: none;
+  cursor: pointer;
+  width: 38px;
+  text-align: center;
+  line-height: normal;
+  border-radius: 5%;
+  margin: 1px;
+}
+.letterButton:hover {
+  transition: 0.4s background-color;
+  background-color: tomato;
+  border: none;
+}
+
+.reset_button {
+  max-width: 60px;
+  height: 35px;
+  border-radius: 10%;
+  border: none;
+  background-color: wheat;
+  font-size: 20px;
+  cursor: pointer;
+}
+.reset_button:hover {
+  transition: 0.4s background-color;
+  background-color: tomato;
+}
+
+.lifes {
+  font-size: 20px;
+  height: 40px;
+  line-height: 180%;
+}
+
+.gameOver_button {
+  position: absolute;
+  z-index: 1;
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 23rem;
+  width: 100vw;
+  font-size: 3rem;
+  color: tomato;
 }

@@ -29,6 +29,7 @@ const alphabet = [
   "y",
   "z",
 ];
+let keyboardBox = "keyboard_box1";
 
 function getAllIndexes(arr, val) {
   let indexes = [],
@@ -39,7 +40,20 @@ function getAllIndexes(arr, val) {
 
 function Keyboard({ keyword, inscriptedWord, onInscriptedWordChange }) {
   const [usedLetters, setUsedLetters] = useState("");
-  const [lifes, setLifes] = useState(10);
+  const [lifes, setLifes] = useState(6);
+  if (lifes === 5) {
+    keyboardBox = "keyboard_box2";
+  } else if (lifes === 4) {
+    keyboardBox = "keyboard_box3";
+  } else if (lifes === 3) {
+    keyboardBox = "keyboard_box4";
+  } else if (lifes === 2) {
+    keyboardBox = "keyboard_box5";
+  } else if (lifes === 1) {
+    keyboardBox = "keyboard_box6";
+  } else if (lifes === 0) {
+    keyboardBox = "keyboard_box7";
+  }
 
   const handleOnClick = (letter) => {
     setUsedLetters(usedLetters + letter);
@@ -65,22 +79,29 @@ function Keyboard({ keyword, inscriptedWord, onInscriptedWordChange }) {
   };
 
   return (
-    <div className="keyboard_box">
-      <div className="keyborad_buttons">
-        {alphabet.map((character) => (
-          <button
-            className="letterButton"
-            key={character}
-            disabled={usedLetters.includes(character) || lifes === 0}
-            onClick={() => handleOnClick(character)} // dzieki funkcji bezimiennej handle on click razem z propsem wykona się po przekazaniu wyżej.
-          >
-            {character}
-          </button>
-        ))}
+    //`keyboard_box${lifes}`
+    <div className={keyboardBox}>
+      <h1 className="gameOver_button" hidden={lifes !== 0}>
+        Game Over
+      </h1>
+      <div className="buttons_box">
+        <div className="resetAndLifesButton_box">
+          <div className="lifes">Lifes remaning {lifes}</div>
+          <button className="reset_button">reset</button>
+        </div>
+        <div className="keyborad_buttons">
+          {alphabet.map((character) => (
+            <button
+              className="letterButton"
+              key={character}
+              disabled={usedLetters.includes(character) || lifes === 0}
+              onClick={() => handleOnClick(character)} // dzieki funkcji bezimiennej handle on click razem z propsem wykona się po przekazaniu wyżej.
+            >
+              {character}
+            </button>
+          ))}
+        </div>
       </div>
-      <div>Lifes remaning {lifes}</div>
-      <h1 hidden={lifes !== 0}>Game Over</h1>
-      <button>reset</button>
     </div>
   );
 }
