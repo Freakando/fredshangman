@@ -29,6 +29,7 @@ const catchphrases = [
   "birman",
   "bison",
   "black marlin",
+  "papito",
 ];
 
 function MainGameBrain() {
@@ -37,44 +38,42 @@ function MainGameBrain() {
   const [inscriptedWord, setInscriptedWord] = useState("");
   const undermark = "_ ";
 
-  useEffect(() => {
+  const inscriptWord = (word) => {
+    const inscriptedCatchPhrase = word
+      .replaceAll(" ", "\xa0\xa0")
+      .replaceAll(/[a-z]/g, undermark);
+
+    setInscriptedWord(inscriptedCatchPhrase);
+  };
+
+  const newKeyword = () => {
     const catchphrasesIndex = Math.floor(Math.random() * catchphrases.length);
     const catchphrase = catchphrases[catchphrasesIndex];
+    console.log(catchphrase);
     setKeyword(catchphrase);
-    setInscriptedWord(
-      undermark.repeat(catchphrase.replace(" ", "").length) +
-        catchphrase.replace(" ", "").length +
-        " letters"
-    );
+    inscriptWord(catchphrase);
+  };
+
+  useEffect(() => {
+    newKeyword();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 1.after "keyWord" is selected, Display its all indexes  as "_".
-  // 2. If the player guess correcly (you get true), change "_" to the orginal letter and in the right spot.
-  // const letterVerificator = (letter) => {
-  //   keyWord.includes(letter);
-  // };
-
-  // correct letters:
-  // 1. If the letter is not pressent in the "keyword", return false
-  // 2. Display that letter in the "wrongLetter"
-  // 3. take one guess away
-  // 4. draw a piece of gallow
-  // 5. show You hang!
-
-  // incorect letters
-  // 1. if the letter is in the "keyword", return true
-  // 2. take that letter out of the array.
-  // 3. uveal that letter in its original index.
-  // 4. when array is empty end game
-  // 5. show You Win!
+  const reset = () => {
+    inscriptWord(keyWord);
+  };
 
   return (
     <div className="container_box">
       <div className="inscriptedWord_box">
         <div className="keyWord">{keyWord}</div>
-        <div className="inscriptedWord">{inscriptedWord}</div>
+        <div className="inscriptedWord">
+          {inscriptedWord} {inscriptedWord.length / 2 + " letters"}
+        </div>
       </div>
       <Keyboard
+        newKeyword={newKeyword}
+        reset={reset}
         keyword={keyWord}
         inscriptedWord={inscriptedWord}
         onInscriptedWordChange={(word) => setInscriptedWord(word)}
