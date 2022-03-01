@@ -1,51 +1,3 @@
-.keyboard_box1 {
-  background-image: url(/src/images/hangman1.png);
-}
-
-.keyboard_box2 {
-  background-image: url(/src/images/hangman2.png);
-}
-
-.keyboard_box3 {
-  background-image: url(/src/images/hangman3.png);
-}
-
-.keyboard_box4 {
-  background-image: url(/src/images/hangman4.png);
-}
-
-.keyboard_box5 {
-  background-image: url(/src/images/hangman5.png);
-}
-
-.keyboard_box6 {
-  background-image: url(/src/images/hangman6.png);
-}
-
-.keyboard_box7 {
-  background-image: url(/src/images/hangman7.png);
-}
-
-.keyboard_box1,
-.keyboard_box2,
-.keyboard_box3,
-.keyboard_box4,
-.keyboard_box5,
-.keyboard_box6,
-.keyboard_box7 {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  min-height: 600px;
-  width: 1000px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  z-index: 0;
-  padding-bottom: 30px;
-  transition: 0.4s background-image;
-}
-
 .buttons_box {
   width: 870px;
   height: 60px;
@@ -199,16 +151,6 @@
 }
 
 @media (max-width: 620px) {
-  .keyboard_box1,
-  .keyboard_box2,
-  .keyboard_box3,
-  .keyboard_box4,
-  .keyboard_box5,
-  .keyboard_box6,
-  .keyboard_box7 {
-    padding-left: 6%;
-  }
-
   .keyborad_buttons {
     margin-top: 16px;
   }

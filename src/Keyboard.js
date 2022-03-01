@@ -1,6 +1,8 @@
 import "./Keyboard.css";
+import "./Landscape";
 
 import { useState } from "react";
+import Landscape from "./Landscape";
 
 const alphabet = [
   "a",
@@ -30,7 +32,7 @@ const alphabet = [
   "y",
   "z",
 ];
-let keyboardBox = "keyboard_box1";
+// let keyboardBox = "keyboard_box1";
 
 function getAllIndexes(arr, val) {
   let indexes = [],
@@ -52,19 +54,19 @@ function Keyboard({
   const [gameWon, setGameWon] = useState(false);
   const [hideKeywordButton, setHideKeywordButton] = useState(true);
 
-  if (lifes === 5) {
-    keyboardBox = "keyboard_box2";
-  } else if (lifes === 4) {
-    keyboardBox = "keyboard_box3";
-  } else if (lifes === 3) {
-    keyboardBox = "keyboard_box4";
-  } else if (lifes === 2) {
-    keyboardBox = "keyboard_box5";
-  } else if (lifes === 1) {
-    keyboardBox = "keyboard_box6";
-  } else if (lifes === 0) {
-    keyboardBox = "keyboard_box7";
-  }
+  // if (lifes === 5) {
+  //   keyboardBox = "keyboard_box2";
+  // } else if (lifes === 4) {
+  //   keyboardBox = "keyboard_box3";
+  // } else if (lifes === 3) {
+  //   keyboardBox = "keyboard_box4";
+  // } else if (lifes === 2) {
+  //   keyboardBox = "keyboard_box5";
+  // } else if (lifes === 1) {
+  //   keyboardBox = "keyboard_box6";
+  // } else if (lifes === 0) {
+  //   keyboardBox = "keyboard_box7";
+  // }
 
   const handleOnClick = (letter) => {
     setUsedLetters(usedLetters + letter);
@@ -95,8 +97,6 @@ function Keyboard({
     setLifes(6);
     setUsedLetters("");
     setHideKeywordButton(true);
-
-    keyboardBox = "keyboard_box1";
   };
 
   const handleReset = () => {
@@ -127,7 +127,8 @@ function Keyboard({
 
   return (
     //`keyboard_box${lifes}`
-    <div className={keyboardBox}>
+    <div>
+      <Landscape numberOfLives={lifes} />
       <h1 className="gameOver winsGameOverYouwin" hidden={lifes !== 0}>
         Game Over
       </h1>
