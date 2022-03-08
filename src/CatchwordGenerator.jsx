@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Keyboard from "./Keyboard";
-import "./MainGameBrain.css";
+import Verificator from "./Verificator";
+import "./CatchwordGenerator.css";
 const catchphrases = [
   "bearded dragon",
   "beaski",
@@ -32,7 +32,7 @@ const catchphrases = [
   "papito",
 ];
 
-function MainGameBrain() {
+function CatchwordGenerator() {
   // catchphrase to be guessed
   const [keyWord, setKeyword] = useState("");
   const [inscriptedWord, setInscriptedWord] = useState("");
@@ -71,7 +71,7 @@ function MainGameBrain() {
           {inscriptedWord} {inscriptedWord.length / 2 + " letters"}
         </div>
       </div>
-      <Keyboard
+      <Verificator
         newKeyword={newKeyword}
         reset={reset}
         keyword={keyWord}
@@ -82,4 +82,4 @@ function MainGameBrain() {
   );
 }
 
-export default MainGameBrain;
+export default CatchwordGenerator;

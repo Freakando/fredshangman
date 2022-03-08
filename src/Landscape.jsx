@@ -8,9 +8,9 @@ import photo5 from "./images/hangman5.png";
 import photo6 from "./images/hangman6.png";
 import photo7 from "./images/hangman7.png";
 
-let landscapePhoto = photo1;
-
 function Landscape({ numberOfLives }) {
+  let landscapePhoto = photo1;
+
   if (numberOfLives === 5) {
     landscapePhoto = photo2;
   } else if (numberOfLives === 4) {
@@ -26,9 +26,6 @@ function Landscape({ numberOfLives }) {
   } else if (numberOfLives === 6) {
     landscapePhoto = photo1;
   }
-
-  console.log(numberOfLives);
-  // console.log(landscapePhoto);
 
   return (
     <div className="landScape_box">
