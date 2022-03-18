@@ -1,12 +1,13 @@
 import "./Verificator.css";
 import "./Landscape";
 
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
 import Landscape from "./Landscape";
 import WinsAndLifesInfo from "./WinsAndLifesInfo";
 import ResAndNewKeyWord from "./ResAndNewKeyWord";
 import KeyboardButtons from "./KeyboardButtons";
 import GameWinOrOverInfo from "./GameWinOrOverInfo";
+import { TestTest } from "./contexts/CatchwordGenerator";
 
 function getAllIndexes(arr, val) {
   let indexes = [],
@@ -15,13 +16,22 @@ function getAllIndexes(arr, val) {
   return indexes;
 }
 
-function Verificator({
-  keyword,
-  inscriptedWord,
-  onInscriptedWordChange,
-  reset,
-  newKeyword,
-}) {
+function Verificator() {
+  const {
+    newKeyword,
+    reset,
+    keyword,
+    inscriptedWord,
+    onInscriptedWordChange,
+    inscriptedWordDisplay,
+  } = useContext(TestTest);
+
+  const context = useContext(TestTest);
+
+  useEffect(() => {
+    console.log(context);
+  }, [context]);
+
   const [usedLetters, setUsedLetters] = useState("");
   const [lifes, setLifes] = useState(6);
   const [winStreak, setWinStreak] = useState(0);
@@ -80,6 +90,7 @@ function Verificator({
   return (
     <div className="testContainer">
       <Landscape numberOfLives={lifes} />
+      <div>{inscriptedWordDisplay}</div>
       <GameWinOrOverInfo lifes={lifes} gameWon={gameWon} />
       <WinsAndLifesInfo winStreak={winStreak} lifes={lifes} />
       <ResAndNewKeyWord
@@ -88,6 +99,7 @@ function Verificator({
         lifes={lifes}
         handleNewKeyword={handleNewKeyword}
       />
+
       <KeyboardButtons
         usedLetters={usedLetters}
         lifes={lifes}

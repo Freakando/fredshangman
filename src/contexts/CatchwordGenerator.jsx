@@ -1,6 +1,10 @@
-import { useEffect, useState } from "react";
-import Verificator from "./Verificator";
-import "./CatchwordGenerator.css";
+import { useEffect, useState, createContext } from "react";
+// import Verificator from "../Verificator";
+// import "./CatchwordGenerator.css";
+// import CatchWordGenerator from "../App";
+
+export const TestTest = createContext();
+
 const catchphrases = [
   "bearded dragon",
   "beaski",
@@ -32,9 +36,9 @@ const catchphrases = [
   "papito",
 ];
 
-function CatchwordGenerator() {
+const CatchwordGenerator = (props) => {
   // catchphrase to be guessed
-  const [keyWord, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("");
   const [inscriptedWord, setInscriptedWord] = useState("");
   const undermark = "_ ";
 
@@ -60,26 +64,28 @@ function CatchwordGenerator() {
   }, []);
 
   const reset = () => {
-    inscriptWord(keyWord);
+    inscriptWord(keyword);
   };
+  const onInscriptedWordChange = (word) => setInscriptedWord(word);
+
+  const inscriptedWordDisplay = `${inscriptedWord} ${
+    inscriptedWord.length / 2 + " letters"
+  }}`;
 
   return (
-    <div className="container_box">
-      <div className="inscriptedWord_box">
-        <div className="keyWord">{keyWord}</div>
-        <div className="inscriptedWord">
-          {inscriptedWord} {inscriptedWord.length / 2 + " letters"}
-        </div>
-      </div>
-      <Verificator
-        newKeyword={newKeyword}
-        reset={reset}
-        keyword={keyWord}
-        inscriptedWord={inscriptedWord}
-        onInscriptedWordChange={(word) => setInscriptedWord(word)}
-      />
-    </div>
+    <TestTest.Provider
+      value={{
+        newKeyword,
+        reset,
+        keyword,
+        inscriptedWord,
+        onInscriptedWordChange,
+        inscriptedWordDisplay,
+      }}
+    >
+      {props.children}
+    </TestTest.Provider>
   );
-}
+};
 
 export default CatchwordGenerator;
