@@ -3,8 +3,6 @@ import { useEffect, useState, createContext } from "react";
 // import "./CatchwordGenerator.css";
 // import CatchWordGenerator from "../App";
 
-export const TestTest = createContext();
-
 const catchphrases = [
   "bearded dragon",
   "beaski",
@@ -35,6 +33,8 @@ const catchphrases = [
   "black marlin",
   "papito",
 ];
+
+export const CatchwordGeneratorContext = createContext();
 
 const CatchwordGenerator = (props) => {
   // catchphrase to be guessed
@@ -70,10 +70,10 @@ const CatchwordGenerator = (props) => {
 
   const inscriptedWordDisplay = `${inscriptedWord} ${
     inscriptedWord.length / 2 + " letters"
-  }}`;
+  }`;
 
   return (
-    <TestTest.Provider
+    <CatchwordGeneratorContext.Provider
       value={{
         newKeyword,
         reset,
@@ -84,7 +84,7 @@ const CatchwordGenerator = (props) => {
       }}
     >
       {props.children}
-    </TestTest.Provider>
+    </CatchwordGeneratorContext.Provider>
   );
 };
 

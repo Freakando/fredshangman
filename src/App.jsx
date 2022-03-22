@@ -1,22 +1,15 @@
 import Verificator from "./Verificator";
-import TestComponent from "./TestComponent";
-import ThemeToggle from "../src/ThemeToggle";
-// import CatchwordGenerator from "./CatchwordGenerator";
-import TestTestProvider from "./contexts/CatchwordGenerator";
-
-import ThemeContextProvider from "./contexts/ThemeContext";
+import CatchwordGeneratorContext from "./contexts/CatchwordGenerator";
+import Theme from "./contexts/Theme";
 
 export default function App() {
-  // const [value, setValue] = useState("null");
   return (
-    <ThemeContextProvider>
+    <Theme>
       <div className="App">
-        <TestTestProvider>
+        <CatchwordGeneratorContext>
           <Verificator />
-        </TestTestProvider>
-        <TestComponent></TestComponent>
-        <ThemeToggle></ThemeToggle>
+        </CatchwordGeneratorContext>
       </div>
-    </ThemeContextProvider>
+    </Theme>
   );
 }

@@ -1,13 +1,13 @@
 import "./Verificator.css";
 import "./Landscape";
 
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import Landscape from "./Landscape";
 import WinsAndLifesInfo from "./WinsAndLifesInfo";
 import ResAndNewKeyWord from "./ResAndNewKeyWord";
 import KeyboardButtons from "./KeyboardButtons";
 import GameWinOrOverInfo from "./GameWinOrOverInfo";
-import { TestTest } from "./contexts/CatchwordGenerator";
+import { CatchwordGeneratorContext } from "./contexts/CatchwordGenerator";
 
 function getAllIndexes(arr, val) {
   let indexes = [],
@@ -24,13 +24,7 @@ function Verificator() {
     inscriptedWord,
     onInscriptedWordChange,
     inscriptedWordDisplay,
-  } = useContext(TestTest);
-
-  const context = useContext(TestTest);
-
-  useEffect(() => {
-    console.log(context);
-  }, [context]);
+  } = useContext(CatchwordGeneratorContext);
 
   const [usedLetters, setUsedLetters] = useState("");
   const [lifes, setLifes] = useState(6);
@@ -89,7 +83,7 @@ function Verificator() {
 
   return (
     <div className="testContainer">
-      <Landscape numberOfLives={lifes} />
+      <Landscape numberOfLifes={lifes} />
       <div>{inscriptedWordDisplay}</div>
       <GameWinOrOverInfo lifes={lifes} gameWon={gameWon} />
       <WinsAndLifesInfo winStreak={winStreak} lifes={lifes} />
