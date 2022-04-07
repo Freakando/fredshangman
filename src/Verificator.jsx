@@ -4,8 +4,8 @@ import "./Landscape";
 import { useState, useContext } from "react";
 import Landscape from "./Landscape";
 import WinsAndLifesInfo from "./WinsAndLifesInfo";
-import ResAndNewKeyWord from "./ResAndNewKeyWord";
-import KeyboardButtons from "./KeyboardButtons";
+import ResetAndNewKeyWord from "./ResetAndNewKeyWord";
+import Keyborad from "./Keyboard";
 import GameWinOrOverInfo from "./GameWinOrOverInfo";
 import { CatchwordGeneratorContext } from "./contexts/CatchwordGenerator";
 
@@ -82,19 +82,20 @@ function Verificator() {
   };
 
   return (
-    <div className="testContainer">
-      <Landscape numberOfLifes={lifes} />
-      <div>{inscriptedWordDisplay}</div>
+    <div className="verificator__container">
+      <Landscape numberOfLifes={lifes} gameWon={gameWon} />
+      <div className="verificator__inscripitedWord">
+        {inscriptedWordDisplay}
+      </div>
       <GameWinOrOverInfo lifes={lifes} gameWon={gameWon} />
       <WinsAndLifesInfo winStreak={winStreak} lifes={lifes} />
-      <ResAndNewKeyWord
+      <ResetAndNewKeyWord
         handleReset={handleReset}
         gameWon={gameWon}
         lifes={lifes}
         handleNewKeyword={handleNewKeyword}
       />
-
-      <KeyboardButtons
+      <Keyborad
         usedLetters={usedLetters}
         lifes={lifes}
         gameWon={gameWon}

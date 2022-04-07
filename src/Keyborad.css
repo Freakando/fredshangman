@@ -1,0 +1,37 @@
+.keyborad__container {
+  width: 1100px;
+  position: absolute;
+  top: 85%;
+
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.keyborad__box {
+  padding: 0.5%;
+
+  background-color: rgb(0, 0, 139, 0.5);
+}
+
+.keyborad__button {
+  font-family: "Permanent Marker";
+  font-size: 27px;
+  margin: 0 2px 0 2px;
+  background-color: skyblue;
+  border: none;
+  border-radius: 10%;
+  color: darkblue;
+}
+
+.keyborad__button:hover {
+  transition: 0.4s background-color;
+  background-color: darkblue;
+  color: lightblue;
+}
+
+.keyborad__button:disabled {
+  color: gray;
+  background-color: darkblue;
+}

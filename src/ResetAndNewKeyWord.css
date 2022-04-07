@@ -1,0 +1,10 @@
+.resetAndNewKeyWord__container {
+  position: absolute;
+  top: 17%;
+  left: 2%;
+}
+
+.resetAndNewKeyWord__buttons {
+  font-family: "Permanent Marker";
+  font-size: 20px;
+}

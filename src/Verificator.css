@@ -1,100 +1,13 @@
-.testContainer {
-  max-width: 844px;
-  max-height: 615px;
-  /* position: relative; */
+.verificator__container {
+  margin: 0 auto;
+  width: 1100px;
+  font-family: "Permanent Marker";
+  position: relative;
 }
 
-.lifesAndWinsInfo_box {
-  display: flex;
-  justify-content: space-evenly;
-  padding: 1rem 0 1rem 0;
-}
-.lifes {
-  width: 6rem;
-  text-align: center;
-}
-
-.resetAndLifesButton_box {
-  display: flex;
-  justify-content: space-evenly;
-  padding-bottom: 1rem;
-}
-
-.keyborad_buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 2%;
-
-  min-width: 250px;
-}
-
-.letterButton {
-  font-size: 1rem;
-  background-color: wheat;
-  border: none;
-  cursor: pointer;
-  width: 40px;
-  height: 28px;
-  text-align: center;
-  line-height: normal;
-  border-radius: 5%;
-  margin: 1.2px;
-}
-.letterButton:hover {
-  transition: 0.4s background-color;
-  background-color: tomato;
-  border: none;
-}
-.resetAndNewKeyword_buttons {
-  height: 30px;
-  border-radius: 10%;
-  border: none;
-  background-color: wheat;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.reset_button:hover {
-  transition: 0.4s background-color;
-  background-color: tomato;
-}
-
-.winsGameOverYouwin {
+.verificator__inscripitedWord {
+  font-size: 37px;
   position: absolute;
-  z-index: 1;
-  text-align: center;
-  font-size: 1rem;
-  top: 28%;
+  top: 42%;
+  left: 22%;
 }
-
-/* 
-
-.newKeyword {
-  width: 138px;
-}
-
-.lifes {
-  font-size: 20px;
-  height: 40px;
-  margin-top: 2px;
-}
-
-
-
-.gameOver {
-  margin-bottom: 23rem;
-  font-size: 3rem;
-  color: tomato;
-}
-
-.youWin {
-  margin-bottom: 23rem;
-  font-size: 3rem;
-  color: rgb(0, 0, 0);
-}
-
-.wins {
-  margin-bottom: 30rem;
-  font-size: 2rem;
-} */

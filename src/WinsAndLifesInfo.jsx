@@ -1,8 +1,10 @@
+import "./WinsAndLifesInfo.css";
+
 function WinsAndLifesInfo({ winStreak, lifes }) {
   return (
-    <div>
-      <div className="wins">Wins: {winStreak}</div>
-      <div className="lifes">Lifes: {lifes}</div>
+    <div className="winsAndLifesInfo__container">
+      <div className="wins__item">Wins: {winStreak}</div>
+      <div className="lifes__item">Lifes: {lifes}</div>
     </div>
   );
 }

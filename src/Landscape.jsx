@@ -9,6 +9,7 @@ import photo4 from "./images/hangman4.png";
 import photo5 from "./images/hangman5.png";
 import photo6 from "./images/hangman6.png";
 import photo7 from "./images/hangman7.png";
+import photo8 from "./images/hangmanWin.png";
 import photo1Night from "./images/hangmanNight1.png";
 import photo2Night from "./images/hangmanNight2.png";
 import photo3Night from "./images/hangmanNight3.png";
@@ -16,76 +17,43 @@ import photo4Night from "./images/hangmanNight4.png";
 import photo5Night from "./images/hangmanNight5.png";
 import photo6Night from "./images/hangmanNight6.png";
 import photo7Night from "./images/hangmanNight7.png";
+import photo8Night from "./images/hangmanNightWin.png";
 
-function Landscape({ numberOfLifes }) {
+const photoWin = photo8;
+const photoWinNight = photo8Night;
+const photoDays = [photo7, photo6, photo5, photo4, photo3, photo2, photo1];
+const photoNight = [
+  photo7Night,
+  photo6Night,
+  photo5Night,
+  photo4Night,
+  photo3Night,
+  photo2Night,
+  photo1Night,
+];
+
+function Landscape({ numberOfLifes, gameWon }) {
   const { dayTime, toggleTheme } = useContext(ThemeContext);
 
-  let landscapePhoto = photo1;
-
-  switch (true) {
-    case numberOfLifes === 5 && dayTime:
-      landscapePhoto = photo2;
-      break;
-
-    case numberOfLifes === 4 && dayTime:
-      landscapePhoto = photo3;
-      break;
-
-    case numberOfLifes === 3 && dayTime:
-      landscapePhoto = photo4;
-      break;
-
-    case numberOfLifes === 2 && dayTime:
-      landscapePhoto = photo5;
-      break;
-
-    case numberOfLifes === 1 && dayTime:
-      landscapePhoto = photo6;
-      break;
-
-    case numberOfLifes === 0 && dayTime:
-      landscapePhoto = photo7;
-      break;
-
-    case numberOfLifes === 6 && !dayTime:
-      landscapePhoto = photo1Night;
-      break;
-
-    case numberOfLifes === 5 && !dayTime:
-      landscapePhoto = photo2Night;
-      break;
-
-    case numberOfLifes === 4 && !dayTime:
-      landscapePhoto = photo3Night;
-      break;
-
-    case numberOfLifes === 3 && !dayTime:
-      landscapePhoto = photo4Night;
-      break;
-
-    case numberOfLifes === 2 && !dayTime:
-      landscapePhoto = photo5Night;
-      break;
-
-    case numberOfLifes === 1 && !dayTime:
-      landscapePhoto = photo6Night;
-      break;
-
-    case numberOfLifes === 0 && !dayTime:
-      landscapePhoto = photo7Night;
-      break;
-
-    default:
-  }
+  const getPhoto = () => {
+    if (dayTime) {
+      return gameWon ? photoWin : photoDays[numberOfLifes];
+    } else {
+      return gameWon ? photoWinNight : photoNight[numberOfLifes];
+    }
+  };
 
   return (
-    <div className="landScape_box">
+    <div className="landScape__container">
       <img
-        className="landScape_img"
+        className="landScape__img"
         alt={"a tree, the hang and the sun"}
-        src={landscapePhoto}
+        src={getPhoto(dayTime, numberOfLifes, gameWon)}
       ></img>
-      <button onClick={toggleTheme}>Toggle day with night</button>
+
+      <button className="landScape__button" onClick={toggleTheme}>
+        Toggle day with night
+      </button>
     </div>
   );
 }

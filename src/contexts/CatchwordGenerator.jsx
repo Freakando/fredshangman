@@ -1,7 +1,4 @@
 import { useEffect, useState, createContext } from "react";
-// import Verificator from "../Verificator";
-// import "./CatchwordGenerator.css";
-// import CatchWordGenerator from "../App";
 
 const catchphrases = [
   "bearded dragon",
